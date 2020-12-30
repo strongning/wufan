@@ -20,11 +20,8 @@
 </style>
 </head>
 <body>
-<audio autoplay="autopaly" loop="loop">
-  <source src="山楂树之恋.mp3" type="audio/mp3" />
-</audio>
-<audio autoplay="autopaly">
-<source src="http://7xiws9.com1.z0.glb.clouddn.com/%E5%B9%B8%E7%A6%8F%E7%9A%84%E4%B8%A4%E4%B8%AA%E4%BA%BA.mp3" type="audio/mp3" />
+<audio id="a1"  autoplay="autopaly" loop="loop" " >
+  <source src="./index_files/山楂树之恋.mp3" type="audio/mp3" />
 </audio>
 <div id="main">
 <div id="error">本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。</div>
@@ -62,10 +59,6 @@
             </div>
             
         </div>
-    
-    <script>
-    </script>
-
     <script>
     (function(){
         var canvas = $('#canvas');
@@ -224,15 +217,24 @@
 
         runAsync().start();
     })();
-    </script>
-</body>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?f4a9140509a9470a022f0a26664758df";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
+
+window.onload=function () {
+    let oA=document.querySelector("#a1");
+    let timer=null;
+    function autoPlay() {
+        if (oA.paused) { //如果暂停
+            oA.paused=false;//设为不暂停
+            oA.volume=0.8;//设置自动播放的初始音量
+            oA.play();//调用play（）方法播放
+        }else {//如果未暂停
+            clearInterval(timer);//清掉定时器
+        }
+    }
+    timer=setInterval(autoPlay,1);//用定时器触发autoplay自动播放
+}
+
 </script>
+
+
+</body>
 </html>
